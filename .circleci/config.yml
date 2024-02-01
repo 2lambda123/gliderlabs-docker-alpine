@@ -43,6 +43,10 @@ jobs:
           name: push images
           command: |
             if [[ "$CIRCLE_BRANCH" == "release" ]]; then docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD; fi
+            - run:
+              shell: /bin/bash -eo pipefail -O globstar
+              name: push images
+              command: /path/to/build push
             ./build push $(circleci tests glob versions/**/options | circleci tests split)
       - run:
           shell: /bin/bash -eo pipefail -O globstar
