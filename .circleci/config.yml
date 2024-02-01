@@ -51,6 +51,6 @@ jobs:
       - run:
           shell: /bin/bash -eo pipefail -O globstar
           name: commit artifacts
-          command: ./build commit $(circleci tests glob versions/**/options | circleci tests split)
+          command: /path/to/build commit $(circleci tests glob versions/**/options | circleci tests split)
       - store_artifacts:
           path: images
