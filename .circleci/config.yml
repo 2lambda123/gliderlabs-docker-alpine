@@ -37,7 +37,7 @@ jobs:
       - run:
           shell: /bin/bash -eo pipefail -O globstar
           name: test images
-          command: ./build test $(circleci tests glob versions/**/options | circleci tests split)
+          command: /path/to/build test $(circleci tests glob versions/**/options | circleci tests split)
       - run:
           shell: /bin/bash -eo pipefail -O globstar
           name: push images
