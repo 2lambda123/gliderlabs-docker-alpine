@@ -22,6 +22,8 @@ The build script takes a glob of `options` files as an argument. Each of these f
 
 Each options file specifies a version of the image to build. An options file can generate images for multiple architectures using the `ARCHS` variable.
 
+Each options file specifies a version of the image to build. An options file can generate images for multiple architectures using the `ARCHS` variable.
+
 ### Example
 
 To build all the images simply run:
