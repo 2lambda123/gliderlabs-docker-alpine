@@ -44,9 +44,9 @@ There is only one difference between the `gliderlabs/alpine`  image and the [off
 
 ## Testing
 
-The test for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
+The verify for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
 
-Use the `test` sub-command of the `build` utility to run tests on currently build images (`build test`).
+Use the `verify` sub-command of the `build` utility to run tests on currently build images (`build test`).
 
 ### Example
 
