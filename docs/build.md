@@ -1,6 +1,6 @@
 # Build
 
-[![CircleCI](https://img.shields.io/circleci/project/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
+[![GitHub Actions](https://img.shields.io/circleci/project/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
 
 A convenience `build` script is included that builds the image and runs basic tests against the resulting image tags. The script is used in the continuous integration process (check out the CircleCI badge link above). But you can run this script locally to build your own images. Be sure to check out the environment variables that can be tweaked at the top of the `build` script file.
 
@@ -8,7 +8,7 @@ A convenience `build` script is included that builds the image and runs basic te
 
 ### Builder
 
-The image is built using a builder Docker container based on the `alpine` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
+The image is built using a build container Docker container based on the `alpine` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
 
 ### Options
 
@@ -44,7 +44,7 @@ There is only one difference between the `gliderlabs/alpine`  image and the [off
 
 ## Testing
 
-The verify for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
+The validate for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
 
 Use the `verify` sub-command of the `build` utility to run tests on currently build images (`build test`).
 
