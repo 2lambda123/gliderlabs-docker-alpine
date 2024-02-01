@@ -45,7 +45,7 @@ $ parallel -m ./build ::: versions/**/options
 
 ## Differences
 
-There is only one difference between the `gliderlabs/alpine`  image and the [official Alpine Linux image in the Docker Library][library] today. The `gliderlabs/alpine` image has an `apk-install` script added to it. However, this script is now considered deprecated as the `apk` utility has the same functionality built-in (using `apk --no-cache`). We now recommend using the official `alpine` images unless you were already using `gliderlabs/alpine`.
+There is only one difference between the `gliderlabs/alpine` image and the [official Alpine Linux image in the Docker Library][library] today. The `gliderlabs/alpine` image has an `apk-install` script added to it. However, this script is now considered deprecated as the `apk` utility has the same functionality built-in (using `apk --no-cache`). We now recommend using the official `alpine` images unless you were already using `gliderlabs/alpine`.
 
 ## Testing
 
