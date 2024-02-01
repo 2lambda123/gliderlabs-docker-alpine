@@ -1,6 +1,6 @@
 # docker-alpine
 
-[![CircleCI](https://img.shields.io/circleci/project/github/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
+[![GitHub Actions Status](https://github.com/gliderlabs/docker-alpine/workflows/CI/badge.svg?branch=master)](https://github.com/gliderlabs/docker-alpine/actions)
 [![Docker Stars](https://img.shields.io/docker/stars/gliderlabs/alpine.svg)][hub]
 [![Docker Pulls](https://img.shields.io/docker/pulls/gliderlabs/alpine.svg)][hub]
 [![Slack](http://glider-slackin.herokuapp.com/badge.svg)][slack]
