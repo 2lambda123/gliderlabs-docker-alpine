@@ -33,7 +33,6 @@ $ ./build version/library-3.2/options versions/gliderlabs-3.2/options
 ```
 
 With `parallel` available you can speed up building a bit:
-
 ```console
 $ parallel -m ./build ::: versions/**/options
 ```
