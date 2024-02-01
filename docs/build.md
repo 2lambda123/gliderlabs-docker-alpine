@@ -8,7 +8,11 @@ A convenience `build` script is included that builds the image and runs basic te
 
 ### Builder
 
-The image is built using a builder Docker container based on the `debian` image. The image is built using a builder Docker container based on the `debian` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
+The image is built using a builder Docker container based on the `debian` image. The image is built using a builder Docker container based on the `debian` image.
+
+### Options
+
+The build script takes a glob of `options` files as an argument. Each of these files lives in a folder that describes the version of Alpine Linux to build. Each line of the `options` file are the options that will be applied to the resulting image. By default, we use the included glob of `versions/**/options`.
 
 ### Options
 
