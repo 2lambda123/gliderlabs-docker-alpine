@@ -26,7 +26,7 @@ Each options file specifies a version of the image to build. An options file can
 
 ### Example
 
-To build all the images simply run:
+To build all the images simply run: $ ./build
 
 ```console
 $ ./build
@@ -35,7 +35,7 @@ $ ./build
 Pass version files to the `build` script to build specific versions:
 
 ```console
-$ ./build version/library-3.2/options versions/gliderlabs-3.2/options
+$ ./build
 ```
 
 With `parallel` available you can speed up building a bit:
