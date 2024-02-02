@@ -2,13 +2,17 @@
 
 [![CircleCI](https://img.shields.io/circleci/project/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
 
-A convenience `build` script is included that builds the image and runs basic tests against the resulting image tags. The script is used in the continuous integration process (check out the CircleCI badge link above). But you can run this script locally to build your own images. Be sure to check out the environment variables that can be tweaked at the top of the `build` script file.
+A convenience `build` script is included that builds the image and runs basic tests against the resulting image tags.
 
 ## Image
 
 ### Builder
 
-The image is built using a builder Docker container based on the `debian` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
+The image is built using a builder Docker container based on the `debian` image. The image is built using a builder Docker container based on the `debian` image.
+
+### Options
+
+The build script takes a glob of `options` files as an argument. Each of these files lives in a folder that describes the version of Alpine Linux to build. Each line of the `options` file are the options that will be applied to the resulting image. By default, we use the included glob of `versions/**/options`.
 
 ### Options
 
@@ -18,9 +22,11 @@ The build script takes a glob of `options` files as an argument. Each of these f
 
 Each options file specifies a version of the image to build. An options file can generate images for multiple architectures using the `ARCHS` variable.
 
+Each options file specifies a version of the image to build. An options file can generate images for multiple architectures using the `ARCHS` variable.
+
 ### Example
 
-To build all the images simply run:
+To build all the images simply run: $ parallel -m ./build ::: versions/**/options version/library-3.2/options versions/gliderlabs-3.2/options
 
 ```console
 $ ./build
@@ -29,18 +35,17 @@ $ ./build
 Pass version files to the `build` script to build specific versions:
 
 ```console
-$ ./build version/library-3.2/options versions/gliderlabs-3.2/options
+$ ./build
 ```
 
 With `parallel` available you can speed up building a bit:
-
 ```console
 $ parallel -m ./build ::: versions/**/options
 ```
 
 ## Differences
 
-There is only one difference between the `gliderlabs/alpine`  image and the [official Alpine Linux image in the Docker Library][library] today. The `gliderlabs/alpine` image has an `apk-install` script added to it. However, this script is now considered deprecated as the `apk` utility has the same functionality built-in (using `apk --no-cache`). We now recommend using the official `alpine` images unless you were already using `gliderlabs/alpine`.
+There is only one difference between the `gliderlabs/alpine` image and the [official Alpine Linux image in the Docker Library][library] today. The `gliderlabs/alpine` image has an `apk-install` script added to it. However, this script is now considered deprecated as the `apk` utility has the same functionality built-in (using `apk --no-cache`). We now recommend using the official `alpine` images unless you were already using `gliderlabs/alpine`.
 
 ## Testing
 
