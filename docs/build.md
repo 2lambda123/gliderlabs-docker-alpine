@@ -1,6 +1,6 @@
 # Build
 
-[![CircleCI](https://img.shields.io/circleci/project/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
+[![GitHub Actions](https://img.shields.io/circleci/project/gliderlabs/docker-alpine/release.svg)](https://circleci.com/gh/gliderlabs/docker-alpine)
 
 A convenience `build` script is included that builds the image and runs basic tests against the resulting image tags. The script is used in the continuous integration process (check out the CircleCI badge link above). But you can run this script locally to build your own images. Be sure to check out the environment variables that can be tweaked at the top of the `build` script file.
 
@@ -8,7 +8,7 @@ A convenience `build` script is included that builds the image and runs basic te
 
 ### Builder
 
-The image is built using a builder Docker container based on the `debian` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
+The image is built using a build container Docker container based on the `alpine` image. This builder image lives in the `builder` sub-directory of the project and uses a `mkimage-alpine.sh` script to generate an Alpine Linux `rootfs.tar.xz` file. This file then gets copied to the root of the project so we can build the main Alpine Linux image by just using the `ADD` command to automatically untar the components to the resulting image.
 
 ### Options
 
@@ -44,9 +44,9 @@ There is only one difference between the `gliderlabs/alpine`  image and the [off
 
 ## Testing
 
-The test for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
+The validate for images is very simple at the moment. It just attempts to install the `openssl` package and verify we exit cleanly.
 
-Use the `test` sub-command of the `build` utility to run tests on currently build images (`build test`).
+Use the `verify` sub-command of the `build` utility to run tests on currently build images (`build test`).
 
 ### Example
 
@@ -97,7 +97,7 @@ ok 4 apk-install script should be available
 
 These are the steps we use for updating the official library image:
 
-1. Merge the `master` branch into `release` and push `release`. This will trigger CircleCI to push resulting image tarballs to the `rootfs/*` branches and push the `gliderlabs` organization images directly to Docker Hub.
+1. Merge the `release` branch into `release` and push `release`. This will trigger CircleCI to push resulting image tarballs to the `rootfs/*` branches and push the `gliderlabs` organization images directly to Docker Hub.
 1. Verify [the build is green in CircleCI](https://circleci.com/gh/gliderlabs/docker-alpine/tree/release).
 1. Fork the [official images repository][official] and clone it locally if you have not already done so.
 1. Create a new local branch in the `docker-library/official-images` repository for the update to alpine.
