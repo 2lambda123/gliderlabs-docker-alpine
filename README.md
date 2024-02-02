@@ -5,7 +5,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/gliderlabs/alpine.svg)][hub]
 [![Slack](http://glider-slackin.herokuapp.com/badge.svg)][slack]
 
-
 A super small Docker image based on [Alpine Linux][alpine]. The image is only 5 MB and has access to a package repository that is much more complete than other BusyBox based images.
 
 ## Why?
@@ -53,6 +52,7 @@ RUN apt-get update -q \
   && rm -rf /var/lib/apt
 ENTRYPOINT ["mysql"]
 ```
+
 This took 19 seconds to build and yields a 164 MB image. Eww. Start doing this:
 
 ```dockerfile
@@ -94,4 +94,5 @@ The code in this repository, unless otherwise noted, is BSD licensed. See the `L
 [alpine]: http://alpinelinux.org/
 [fastly]: https://www.fastly.com/
 [hub]: https://hub.docker.com/r/gliderlabs/alpine/
+
 <img src="https://ga-beacon.appspot.com/UA-58928488-2/docker-alpine/readme?pixel" />
